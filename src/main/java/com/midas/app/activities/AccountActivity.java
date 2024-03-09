@@ -1,0 +1,31 @@
+package com.midas.app.activities;
+
+import com.midas.app.models.Account;
+import com.midas.app.models.UpdateAccountRequest;
+import io.temporal.activity.ActivityInterface;
+import io.temporal.activity.ActivityMethod;
+import java.util.UUID;
+
+@ActivityInterface
+public interface AccountActivity {
+  /**
+   * saveAccount saves an account in the data store.
+   *
+   * @param account is the account to be saved
+   * @return Account
+   */
+  @ActivityMethod
+  Account saveAccount(Account account);
+
+  /**
+   * createPaymentAccount creates a payment account in the system or provider.
+   *
+   * @param account is the account to be created
+   * @return Account
+   */
+  @ActivityMethod
+  Account createPaymentAccount(Account account);
+
+  @ActivityMethod
+  Account updateAccount(UUID accountId, UpdateAccountRequest updateRequest);
+}
